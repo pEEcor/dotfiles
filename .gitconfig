@@ -1,0 +1,17 @@
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = pEEcor
+	email = pEEcor@xcor.org
+	signingkey = D3D61C51
+[core]
+	editor = vim
+	#excludesfile = ~/.gitignore_global
+[alias]
+	br = branch
+	l = log --graph --stat --decorate --all
+	co = checkout
+	ci = commit -S
+	s = status
