@@ -10,8 +10,8 @@ bar {
     status_command while date +'%a %d.%m.%Y %H:%M'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #323232
+        statusline #abb2bf
+        background #282c34
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }

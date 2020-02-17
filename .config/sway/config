@@ -4,6 +4,16 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+### colors
+set $black #282c34
+set $red #e06c75
+set $green #98c379
+set $yellow #d19a66
+set $blue #61afef
+set $magenta #c678dd
+set $cyan #56b6c2
+set $white #abb2bf
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -19,7 +29,8 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
+#set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
+set $menu bemenu-run -i -p "▶" --tf=$red --tb=$black --nf=$white --nb=$black --hf=$red --hb=$black --ff=$red --fb=$black | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -60,6 +71,14 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+### Font for title bar
+font Fira Code 10
+
+### Color (One Dark)
+client.focused #5c6370 #5c6370 #98c379 #61afef #5c6370
+client.unfocused #5c6370 #282c34 #abb2bf #abb2bf #5c6370
+client.focused_inactive #5c6370 #282c34 #98c379 #abb2bf #5c6370
+
 ### Key bindings
 #
 # Basics:
@@ -68,7 +87,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
