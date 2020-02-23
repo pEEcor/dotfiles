@@ -1,0 +1,20 @@
+# show keyboard layout
+show-keyboard-layout
+
+# background color
+color=282c34
+inside-color=282c34
+layout-bg-color=282c34
+#layout-border-color=282c34
+
+# ring color
+ring-color=98c379
+
+# font
+font=Fira Code
+
+# always show indicator
+indicator-idle-visible
+
+# make indicator larger
+indicator-radius=150
