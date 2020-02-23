@@ -10,8 +10,22 @@ layout-bg-color=282c34
 # ring color
 ring-color=98c379
 
+key-hl-color=98c379
+bs-hl-color=e06c75
+
+ring-clear-color=d19a66
+inside-clear-color=d19a66
+
+ring-wrong-color=e06c75
+inside-wrong-color=e06c75
+
+ring-ver-color=61afef
+inside-ver-color=61afef
+
 # font
 font=Fira Code
+font-size=24
+text-color=abb2bf
 
 # always show indicator
 indicator-idle-visible
