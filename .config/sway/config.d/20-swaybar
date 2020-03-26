@@ -7,15 +7,15 @@ set $battery_capacity $(cat /sys/class/power_supply/BAT0/capacity)
 set $date $(date +'%a %d.%m.%Y %H:%M')
 
 bar {
-    position top
+    #position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while echo $battery_capacity $date; do sleep 1; done
-
-    colors {
-        statusline #abb2bf
-        background #282c34
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    #status_command while echo $battery_capacity $date; do sleep 1; done
+    swaybar_command waybar
+    #colors {
+    #    statusline #abb2bf
+    #    background #282c34
+    #    inactive_workspace #32323200 #32323200 #5c5c5c
+    #}
 }

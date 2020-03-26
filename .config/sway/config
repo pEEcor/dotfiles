@@ -30,8 +30,9 @@ set $term alacritty
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
-set $menu bemenu-run -i -p "▶" --tf=$red --tb=$black --nf=$white --nb=$black --hf=$red --hb=$black --ff=$red --fb=$black | xargs swaymsg exec --
+#set $menu bemenu-run -i -p "▶" --tf=$red --tb=$black --nf=$white --nb=$black --hf=$red --hb=$black --ff=$red --fb=$black | xargs swaymsg exec --
 
+set $menu wofi --show drun --fork --insensitive --term alacritty --promt "▶" | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -221,6 +222,15 @@ bindsym $mod+r mode "resize"
 # screen brightness control
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10 
+
+# volume control
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
+
+# clipboard manager
+exec wl-paste -t text --watch clipman store
+bindsym $mod+z exec clipman pick -t wofi
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
