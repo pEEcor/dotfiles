@@ -1,0 +1,44 @@
+/*
+ * black: 282c34, grey: 5c6370
+ * green: 98c379
+ * white: abb2bf
+ * 
+ */
+window {
+margin: 5px;
+border: 2px solid #5c6370;
+background-color: #282c34;
+/*opacity: 0.8;*/
+}
+
+#input {
+margin: 1px;
+color: #abb2bf;
+border: 2px solid #5c6370;
+background-color: #282c34;
+}
+
+#inner-box {
+margin: 5px;
+/*border: 2px solid yellow;*/
+background-color: #282c34;
+}
+
+#outer-box {
+margin: 5px;
+border: 2px solid #282c34;
+background-color: #282c34;
+}
+
+#scroll {
+margin: 5px;
+/*border: 2px solid orange;*/
+background-color: #282c34;
+}
+
+#text {
+margin: 5px;
+/*border: 2px solid cyan; */
+color: #abb2bf;
+background-color: #282c34;
+}
