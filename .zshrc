@@ -81,15 +81,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-  export TERM='xterm'
-else
-  export EDITOR='nvim'
-  export TERM='alacritty'
-fi
-
 # custom completions
 #compinit
 # Compilation flags
@@ -108,3 +99,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias vim=nvim
 alias l='exa -la'
 alias tmux='tmux -f .config/tmux/tmux.conf'
+# set TERM to xterm for ssh targets, since alacritty lead to complications
+alias ssh='TERM=xterm ssh'
