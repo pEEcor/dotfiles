@@ -77,6 +77,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export EDITOR='nvim'
+export PATH=~/.cargo/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -95,9 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias vim=nvim
 alias l='exa -la'
 alias tmux='tmux -f .config/tmux/tmux.conf'
 # set TERM to xterm for ssh targets, since alacritty lead to complications
 alias ssh='TERM=xterm ssh'
+alias ..='cd ..'
