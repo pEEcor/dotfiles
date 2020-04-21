@@ -105,3 +105,4 @@ alias tmux='tmux -f .config/tmux/tmux.conf'
 # set TERM to xterm for ssh targets, since alacritty lead to complications
 alias ssh='TERM=xterm ssh'
 alias ..='cd ..'
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
