@@ -76,10 +76,17 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# shorten the agnoster prompt a little
+prompt_dir() {
+    prompt_segment blue $CURRENT_FG '%1~'
+}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='nvim'
 export PATH=~/.cargo/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
+source $HOME/.config/lf/icons.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -97,7 +104,6 @@ export PATH=~/.cargo/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias vim=nvim
 alias l='exa -la'
@@ -106,3 +112,4 @@ alias tmux='tmux -f .config/tmux/tmux.conf'
 alias ssh='TERM=xterm ssh'
 alias ..='cd ..'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
+

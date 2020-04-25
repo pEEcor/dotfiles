@@ -1,44 +1,54 @@
-/*
- * black: 282c34, grey: 5c6370
- * green: 98c379
- * white: abb2bf
- * 
- */
-window {
-margin: 5px;
-border: 2px solid #5c6370;
-background-color: #282c34;
-/*opacity: 0.8;*/
-}
-
-#input {
-margin: 1px;
-color: #abb2bf;
-border: 2px solid #5c6370;
-background-color: #282c34;
-}
-
-#inner-box {
-margin: 5px;
-/*border: 2px solid yellow;*/
-background-color: #282c34;
+#window {
+    margin: 5px;
+    border: 2px solid --wofi-color8;
+    background-color: --wofi-color0;
+    /*opacity: 0.8;*/
+    transition: 0.5s ease-in-out;
 }
 
 #outer-box {
-margin: 5px;
-border: 2px solid #282c34;
-background-color: #282c34;
+    margin: 5px;
+    border: 2px solid --wofi-color0;
+    background-color: --wofi-color0;
+    transition: 0.5s ease-in-out;
+}
+
+#inner-box {
+    margin: 5px;
+    background-color: --wofi-color0;
+    transition: 0.5s ease-in-out;
+}
+
+
+#input {
+    margin: 1px;
+    color: --wofi-color15;
+    border: 3px solid --wofi-color8;
+    background-color: --wofi-color0;
+    caret-color: --wofi-color15;
+    font: Fira Code;
+    outline-style: none;
 }
 
 #scroll {
-margin: 5px;
-/*border: 2px solid orange;*/
-background-color: #282c34;
+    margin: 5px;
+    color: --wofi-color8
+    background-color: --wofi-color8;
+    
 }
 
 #text {
-margin: 5px;
-/*border: 2px solid cyan; */
-color: #abb2bf;
-background-color: #282c34;
+    color: --wofi-color15;
+    margin: 5px;
+}
+
+#entry:selected {
+    color: --wofi-color15;
+    background-color: --wofi-color2;
+    border: 0px;
+}
+
+#entry:unselected {
+    color: --wofi-color15;
+    background-color: --wofi-color0;
 }
