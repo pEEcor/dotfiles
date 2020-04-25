@@ -19,6 +19,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'voldikss/vim-floaterm'
 " tagbar
 Plug 'majutsushi/tagbar'
+" vimtex
+Plug 'lervag/vimtex'
 
 call plug#end()
 
