@@ -2,13 +2,15 @@
 
 This is my personal dotfile collection.
 
-Additionaly, documentation for various topics is included:
+Additionaly, documentation for system setup is included:
 
-### Installation
-* [Arch Installation Guide](.doc/arch_install.md)
-* [General Configuration](.doc/configuration_general.md)
-* [Desktop Computer Configuration](.doc/configuration_tower.md)
-* [Razer Blade Stealth 2019 Config](.doc/configuration_blade.md)
+## Installation
 
-### Dotfiles
+* [Arch Install](.doc/arch_install.md)
+* [General Config](.doc/configuration_general.md)
+* [Desktop Config](.doc/configuration_tower.md)
+* [Blade Config](.doc/configuration_blade.md)
+
+## Sync Dotfiles
+
 * [How to get/store dotfiles](https://www.atlassian.com/git/tutorials/dotfiles)

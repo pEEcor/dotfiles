@@ -3,6 +3,7 @@
 ## Network
 
 Enable resolvconf to avoid direct usage of `/etc/resolv.conf` from dhcpcd from multiple interfaces (including VPN).
+
 ```bash
 systemctl enable systemd-resolved.service
 ```
@@ -14,6 +15,7 @@ systemctl enable netctl-auto@wlo1.service
 ```
 
 ## Disable MX150
+
 For some reason, `bbswitch` alone does not disable the dedicated graphics card, but bumblebeed does, if bbswitch is installed. This solves the weired issue where sway takes ~10s to start.
 
 ```bash
