@@ -130,7 +130,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        // "icon-size": 20,
         "spacing": 10
     },
     "clock": {
@@ -177,7 +177,8 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        //"format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-ethernet": "{ipaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
@@ -192,8 +193,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
