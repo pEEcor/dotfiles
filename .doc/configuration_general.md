@@ -20,20 +20,11 @@ Instructions for dotfiles stored inside a git repository:
 ## Sway, Display Manager
 
 ```bash
-# install favorite terminal emulator to have a terminal ready
-pacman -S alacritty
-
-# install sway
-pacman -S sway
+# install compositor, terminal emulator and application launcher
+pacman -S sway alacritty wofi
 
 # Additionally fetch other sway components
 pacman -S waybar swaylock swayidle
-```
-
-```bash
-# install Ly display manger
-trizen -S ly-git
-# it can then be configured in /etc/ly/config.ini, the sway session will be detected automatically
 ```
 
 ## Fonts
@@ -66,7 +57,7 @@ set various environ variables to tighten the awareness of wayland beeing used.
 
 ```bash
 # install greetd (deamon) and wlgreet (graphical frontend)
-yay -S greetd wlgreet
+yay -S greetd greetd-wlgreet
 ```
 
 Create `/usr/local/bin/sway-run.sh` with the following content and make it
@@ -142,6 +133,16 @@ pacman -S firefox
 MOZ_ENABLE_WAYLAND=1
 ```
 
+## NVIM
+
+Add pluginmanger [vim-plug](https://github.com/junegunn/vim-plug) to nvim
+autoload path. Then install plugins inside vim with `:PlugInstall`.
+
+```bash
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 ## Sound
 
 To be able to nicely manage multiple input and output streams install
@@ -159,13 +160,14 @@ pacman -S pulseaudio pulseaudio-alsa pavucontrol
 ### Official
 
 ```bash
-wl-clipboard
+wl-clipboard                # required for clipman
+man-pages                   # linux man pages
 ```
 
 ### AUR
 
 ```bash
-clipman
-zsh-autosuggestions
-zsh-syntax-highlighting
+clipman                     # clipboard manager
+zsh-autosuggestions         # fish like history suggestions
+zsh-syntax-highlighting     # fish like command highlighting
 ```
