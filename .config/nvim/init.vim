@@ -23,6 +23,8 @@ Plug 'majutsushi/tagbar'
 Plug 'lervag/vimtex'
 " c/c++ syntax highlighting
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+" json filetype with comments
+Plug 'kevinoid/vim-jsonc'
 
 call plug#end()
 
@@ -49,6 +51,7 @@ set softtabstop=4               " number of spaces in tab when editing
 set shiftwidth=4                " number of spaces for tabs when expandtab is set, also affects automatic indentaion
 set expandtab                   " tabs are spaces with amount of shiftwidth
 set autoindent                  " auto indent curser in next line to current column
+set colorcolumn=80
 
 "UI Config
 set number
