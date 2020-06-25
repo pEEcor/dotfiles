@@ -21,6 +21,8 @@ Plug 'voldikss/vim-floaterm'
 Plug 'majutsushi/tagbar'
 " vimtex
 Plug 'lervag/vimtex'
+" c/c++ syntax highlighting
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
@@ -65,10 +67,11 @@ set ignorecase
 nnoremap <silent> <F2> :nohlsearch<CR>
 
 " filetype specific indentations
-"autocmd FileType c setlocal smartindent
-"autocmd FileType cpp setlocal smartindent
-"autocmd FileType make setlocal noexpandtab
+autocmd FileType c setlocal smartindent 
+autocmd FileType cpp setlocal noexpandtab shiftwidth=2
+autocmd FileType make setlocal noexpandtab
 "autocmd FileType python setlocal expandtab
+autocmd FileType tex setlocal textwidth=80
 
 "Moving
 inoremap jj <Esc>
@@ -159,6 +162,24 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 
 " git gutter
