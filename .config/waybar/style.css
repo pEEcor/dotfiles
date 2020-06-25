@@ -3,7 +3,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Fira Code;
+    font-family: FiraCode Nerd Font;
     font-size: 15px;
     min-height: 0;
 }
@@ -27,21 +27,21 @@ window#waybar {
 #custom-left-arrow-dark {
     color: @background;
     background: @color8;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 #custom-left-arrow-light {
     color: @color8;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 #clock, #battery, #backlight, #memory, #cpu, #network, #pulseaudio, #idle_inhibitor, #tray {
     background: @color8;
-    padding: 3px;
+    padding: 5px;
 }
 
 #clock {
-    padding: 3px;
+    padding: 5px;
 }
 
 #workspaces {

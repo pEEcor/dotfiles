@@ -16,6 +16,9 @@
 
 include "~/.cache/wal/colors-sway"
 
+### Font for title bar
+font FiraCode Nerd Font 10
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -117,7 +120,12 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag \
+    -t warning \
+    -m 'What do you want to do?' \
+    -b 'Exit Sway' 'swaymsg exit' \
+    -b 'Poweroff' 'systemctl poweroff' \
+    -b 'Reboot' 'systemctl reboot'
 #
 # Moving around:
 #
@@ -251,8 +259,8 @@ bindsym $mod+z exec clipman pick -t wofi
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 
-for_window [app_id="firefox"] border none
-for_window [app_id="Alacritty"] border none
+#for_window [app_id="firefox"] border none
+#for_window [app_id="Alacritty"] border none
 
 # execute various stuff
 exec mako
