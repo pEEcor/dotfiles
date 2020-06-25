@@ -66,7 +66,7 @@ If you like to disable some mirrors to get Arch only from servers within your co
 Then install Arch with:
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git
+pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git neovim
 ```
 
 For wireless internet access install [netctl](https://wiki.archlinux.org/index.php/Netctl). It provides `wifi-menu` when certain optional requirements are installed too, namely: `wpa_supplicant dialog dhcpcd`.
