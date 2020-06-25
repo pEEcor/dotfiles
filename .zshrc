@@ -113,3 +113,7 @@ alias ssh='TERM=xterm ssh'
 alias ..='cd ..'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
+# enable syntax highlighting
+# requires zsh-syntax-highlighting e.g. pacman -S zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
