@@ -46,24 +46,45 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Input configuration
-#
-# Example configuration:
-#
-input "1739:52643:1A581000:00_06CB:CDA3_Touchpad" {
-    dwt enabled
-    tap enabled
-    natural_scroll disabled
-    middle_emulation enabled
-    click_method clickfinger
+output "DP-2" {
+    pos 0 0
+    res 2560x1440
+    transform 270
 }
-#
+
+output "DP-1" {
+    pos 1440 560
+    res 2560x1440@165Hz
+}
+
+output "DP-3" {
+    pos 4000 560
+    res 2560x1440
+}
+
+# bind work to monitors
+# cmd middle
+workspace 1 output DP-1
+# web left
+workspace 2 output DP-2
+# code middle
+workspace 3 output DP-3
+# media right
+workspace 4 output DP-1
+# communication right
+workspace 5 output DP-3
+# more on 1
+workspace 6 output DP-1
+# backup on 1
+workspace 7 output DP-1
+# backup on 2
+workspace 8 output DP-2
+# backup on 3
+workspace 9 output DP-3
+
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-
-### Font for title bar
-font Fira Code 10
 
 ### Color (One Dark)
 #                       <border>    <background>    <text>          <indicator>     <child_border>
