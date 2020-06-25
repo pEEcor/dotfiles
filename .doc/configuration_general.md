@@ -57,7 +57,7 @@ set various environ variables to tighten the awareness of wayland beeing used.
 
 ```bash
 # install greetd (deamon) and wlgreet (graphical frontend)
-yay -S greetd wlgreet
+yay -S greetd greetd-wlgreet
 ```
 
 Create `/usr/local/bin/sway-run.sh` with the following content and make it
