@@ -1,45 +1,37 @@
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    //"height": 20, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
+    "layer": "top",
+
     "modules-left": [
         "sway/workspaces",
         "sway/mode"
-        //"custom/media",
-        //"custom/right-arrow-dark"
     ],
 
     "modules-center": [
-        "sway/window"
+        
     ],
 
     "modules-right": [
-        "custom/left-arrow-light",
         "tray",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
+        "custom/separator",
         "idle_inhibitor",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
+        "custom/separator",
         "pulseaudio",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
+        "custom/separator",
         "network",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
+        "custom/separator",
+        "disk",
+        "custom/separator",
         "cpu",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
+        "custom/separator",
         "memory",
-        //"temperature",
-        "custom/left-arrow-dark",
-        "custom/left-arrow-light",
-        "clock"
+        "custom/separator",
+        "custom/pacman",
+        "custom/separator",
+        "clock#date",
+        "custom/separator",
+        "sway/language"
     ],
     
-    // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{icon}",
@@ -67,8 +59,14 @@
         }
     },
 
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50
+    },
+
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "<span style=\"italic\">{}</span>",
+        "max-length": 50
     },
 
     "custom/left-arrow-dark": {
@@ -90,6 +88,15 @@
 		"format": "",
 		"tooltip": false
 	},
+
+    "custom/separator": {
+        "format": "|",
+		"tooltip": false
+    },
+
+    "sway/language": {
+        "format": "{}"
+    },
 
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
@@ -125,38 +132,46 @@
         }
     },
     "tray": {
-        // "icon-size": 20,
         "spacing": 10
     },
+    "clock#date": {
+        "time": "time1",
+        "format": "{:%H:%M %d.%m.%Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
     "clock": {
-        // "timezone": "Europe/Berlin",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "time": "time2",
+        "format": "{:%H:%M}"
     },
     "cpu": {
+        "interval": 1,
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% "
+        "interval": 1,
+        "format": "{used:0.1f}G/{total:0.1f}G "
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% ",
+        "path": "/",
+        "tooltip": true,
+        "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", ""]
     },
 
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -164,22 +179,17 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
 
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
-        //"format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-        "format-ethernet": "{ipaddr}",
+        "format-ethernet": "{ipaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -208,5 +218,14 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/pacman": {
+        "format": "{} ",
+        "interval": 3600,
+        "exec": "pacman -Qu | wc -l",
+        "exec-if": "exit 0",
+        "tooltip": true,
+        "on-click": "alacritty -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
     }
 }

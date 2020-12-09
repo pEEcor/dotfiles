@@ -10,5 +10,13 @@
         "editor.wordWrap": "on",
         "editor.quickSuggestions": false,
         "editor.rulers": [80]
-    }
+    },
+    "[latex]": {
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "editor.fontLigatures": false
+    },
+    "window.zoomLevel": 0,
+    "explorer.confirmDelete": false,
+    "python.showStartPage": false
 }

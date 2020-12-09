@@ -5,7 +5,6 @@
     border-radius: 0;
     font-family: FiraCode Nerd Font;
     font-size: 15px;
-    min-height: 0;
 }
 
 window#waybar {
@@ -16,32 +15,33 @@ window#waybar {
 #custom-right-arrow-dark {
     color: @background;
     background: @color8;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 #custom-right-arrow-light {
     color: @color8;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 #custom-left-arrow-dark {
     color: @background;
     background: @color8;
-    font-size: 21px;
+    font-size: 23px;
 }
 
 #custom-left-arrow-light {
     color: @color8;
-    font-size: 21px;
+    font-size: 23px;
 }
 
-#clock, #battery, #backlight, #memory, #cpu, #network, #pulseaudio, #idle_inhibitor, #tray {
-    background: @color8;
-    padding: 5px;
+#clock.date, #battery, #backlight, #memory, #cpu, #network, #pulseaudio, #idle_inhibitor, #tray, #disk, #custom-pacman {
+    background: @background;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
-#clock {
-    padding: 5px;
+#custom-separator {
+    color: @foreground;
 }
 
 #workspaces {
@@ -50,17 +50,20 @@ window#waybar {
 
 #workspaces button {
     /*padding: 0 5px;*/
-    /*background: transparent;*/
+    background: transparent;
     color: @foreground;
+    min-width: 50px;
 }
 
 #workspaces button:hover {
     background: @color8;
+    min-width: 50px;
 }
 
 #workspaces button.focused {
     background: @color8;
-    color: @color2;
+    color: @color4;
+    min-width: 50px;
 }
 
 
