@@ -37,9 +37,24 @@ set $term alacritty
 #set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
 
 # wofi seems to launch applications without hickups when not beeing passed run with drun-
-set $menu wofi --show run
+set $menu_run wofi --show=run
+set $menu_drun wofi
 
-### Output configuration
+
+### Input configuration
+#
+# Keyboard
+input * {
+    # set us international as default layout for all connected keyboards
+    xkb_layout us
+    xkb_variant intl
+    repeat_delay 200
+    repeat_rate 50
+
+    scroll_factor 4
+}
+
+### Output configurati"on
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
@@ -53,16 +68,20 @@ output "DP-2" {
     pos 0 0
     res 2560x1440
     transform 270
+    bg ~/Downloads/wallpapers/mobile_wallpapers/1440x2560/style_over_substance_1440x2560.jpg fill
 }
 
 output "DP-1" {
     pos 1440 560
-    res 2560x1440@165Hz
+    res 2560x1440@30Hz
+    bg ~/Downloads/wallpapers/metro/2560x1600/CP77-Metro-2560x1600_EN.png fill
 }
 
 output "DP-3" {
-    pos 4000 560
+    pos 4000 0
     res 2560x1440
+    transform 90
+    bg ~/Downloads/wallpapers/e3_2018/2560x1600/Just_around_the_corner-2560x1600-EN.png fill
 }
 
 # bind work to monitors
@@ -91,7 +110,7 @@ workspace 9 output DP-3
 
 ### Color (One Dark)
 #                       <border>    <background>    <text>          <indicator>     <child_border>
-client.focused          $color8     $color8         $color2         $color4         $color8
+client.focused          $color8     $color8         $color4         $color4         $color8
 client.unfocused        $color8     $background     $foreground     $color4         $color8
 client.focused_inactive $color8     $background     $foreground     $color4         $color8
 client.urgent           $color1     $color8         $color1         $color4         $color1
@@ -107,7 +126,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+#bindsym $mod+d exec $menu_run
+bindsym $mod+space exec $menu_drun
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -198,7 +218,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
@@ -252,15 +272,8 @@ bindsym XF86AudioRaiseVolume exec pamixer -i 5
 bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioMute exec pamixer -t
 
-# clipboard manager
-exec wl-paste -t text --watch clipman store
-bindsym $mod+z exec clipman pick -t wofi
-
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 
 #for_window [app_id="firefox"] border none
 #for_window [app_id="Alacritty"] border none
-
-# execute various stuff
-exec mako
