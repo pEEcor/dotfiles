@@ -19,12 +19,17 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'voldikss/vim-floaterm'
 " tagbar
 Plug 'majutsushi/tagbar'
+" nerdtree
+Plug 'preservim/nerdtree'
 " vimtex
 Plug 'lervag/vimtex'
 " c/c++ syntax highlighting
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " json filetype with comments
 Plug 'kevinoid/vim-jsonc'
+" toml support
+Plug 'cespare/vim-toml'
+
 
 call plug#end()
 
@@ -51,11 +56,11 @@ set softtabstop=4               " number of spaces in tab when editing
 set shiftwidth=4                " number of spaces for tabs when expandtab is set, also affects automatic indentaion
 set expandtab                   " tabs are spaces with amount of shiftwidth
 set autoindent                  " auto indent curser in next line to current column
-set colorcolumn=80
+"set colorcolumn=80
 
 "UI Config
 set number
-set cursorline
+"set cursorline
 set wildmenu
 "set textwidth=120               " automatically wrap after 120 characters
 "set colorcolumn=+1              " show 120 character indicator
@@ -90,14 +95,14 @@ nnoremap <C-l> <C-w>l
 
 " vim airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='nord'
+let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 
 " nord
-let g:nord_italic = 1
-let g:nord_italic_comment = 1
-let g:nord_cursor_line_number_background = 1
-let g:nord_bold_vertical_split_line = 1
+"let g:nord_italic = 1
+"let g:nord_italic_comment = 1
+"let g:nord_cursor_line_number_background = 1
+"let g:nord_bold_vertical_split_line = 1
 
 " coc
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -197,7 +202,9 @@ command! LF FloatermNew lf
 nnoremap <silent> <leader>lf :LF<CR>
 
 " tagbar
-nmap <silent> <F3> :TagbarToggle<CR>
+nmap <silent> <F4> :TagbarToggle<CR>
+" nerdtree
+map <silent> <F3> :NERDTreeToggle<CR>
 "Colors
 syntax on
-colorscheme nord
+colorscheme wal

@@ -26,7 +26,8 @@
     border: 3px solid --wofi-color8;
     background-color: --wofi-color0;
     caret-color: --wofi-color15;
-    font: Fira Code;
+    font: Fira Code Nerd Font;
+    font-size: 24;
     outline-style: none;
 }
 
@@ -44,11 +45,10 @@
 
 #entry:selected {
     color: --wofi-color15;
-    background-color: --wofi-color2;
     border: 0px;
 }
 
 #entry:unselected {
     color: --wofi-color15;
-    background-color: --wofi-color0;
+    background-color: --wofi-color2;
 }
