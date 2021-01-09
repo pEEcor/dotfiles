@@ -38,7 +38,7 @@ set $term alacritty
 
 # wofi seems to launch applications without hickups when not beeing passed run with drun-
 set $menu_run wofi --show=run
-set $menu_drun wofi
+set $menu_drun ulauncher
 
 
 ### Input configuration
