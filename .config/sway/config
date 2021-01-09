@@ -272,6 +272,13 @@ bindsym XF86AudioRaiseVolume exec pamixer -i 5
 bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioMute exec pamixer -t
 
+# clipboard manager
+exec wl-paste -t text --watch clipman store
+bindsym $mod+z exec clipman pick -t wofi
+
+# application specific settings
+for_window [app_id="nextcloud"] floating enable
+
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 
