@@ -37,7 +37,8 @@ set $term alacritty
 #set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
 
 # wofi seems to launch applications without hickups when not beeing passed run with drun-
-set $menu wofi --show run
+#set $menu wofi --show run
+set $menu ulauncher
 
 ### Output configuration
 #
