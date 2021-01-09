@@ -237,6 +237,9 @@ bindsym $mod+z exec clipman pick -t wofi
 
 # application specific settings
 for_window [app_id="nextcloud"] floating enable
+for_window [app_id="ulauncher"] floating enable
+for_window [app_id="ulauncher"] border none
+
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
