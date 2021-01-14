@@ -37,41 +37,34 @@ set $term alacritty
 #set $menu wofi --show drun -f -i -d | xargs swaymsg exec --
 
 # wofi seems to launch applications without hickups when not beeing passed run with drun-
-#set $menu wofi --show run
-set $menu ulauncher
+set $menu_run wofi --show=run
+set $menu_drun ulauncher
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Input configuration
 #
-# Example configuration:
-#
-input "1739:52643:1A581000:00_06CB:CDA3_Touchpad" {
-    dwt enabled
-    tap enabled
-    natural_scroll disabled
-    middle_emulation enabled
-    click_method clickfinger
+# Keyboard
+input * {
+    # set us international as default layout for all connected keyboards
+    xkb_layout us
+    xkb_variant intl
+    repeat_delay 200
+    repeat_rate 50
+
+    scroll_factor 4
 }
+
+### Output configurati"on
 #
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-### Font for title bar
-font Fira Code 10
-
 ### Color (One Dark)
 #                       <border>    <background>    <text>          <indicator>     <child_border>
-client.focused          $color8     $color8         $color2         $color4         $color8
+client.focused          $color8     $color8         $color4         $color4         $color8
 client.unfocused        $color8     $background     $foreground     $color4         $color8
 client.focused_inactive $color8     $background     $foreground     $color4         $color8
 client.urgent           $color1     $color8         $color1         $color4         $color1
@@ -87,7 +80,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+#bindsym $mod+d exec $menu_run
+bindsym $mod+space exec $menu_drun
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -178,7 +172,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
@@ -247,6 +241,3 @@ include ~/.config/sway/config.d/*
 
 #for_window [app_id="firefox"] border none
 #for_window [app_id="Alacritty"] border none
-
-# execute various stuff
-exec mako
