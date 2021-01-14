@@ -5,6 +5,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'arcticicestudio/nord-vim'
 " wal vim theme
 Plug 'dylanaraps/wal.vim'
+" nord
+Plug 'arcticicestudio/nord-vim'
 " airline
 Plug 'vim-airline/vim-airline'
 " gitgutter
