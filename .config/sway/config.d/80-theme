@@ -1,0 +1,5 @@
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "FlatColor"
+    gsettings set org.gnome.desktop.interface icon-theme "oomox-nord"
+    gsettings set org.gnome.desktop.interface font-name "Fira Code Nerd Font"
+}
