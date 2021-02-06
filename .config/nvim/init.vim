@@ -31,6 +31,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'kevinoid/vim-jsonc'
 " toml support
 Plug 'cespare/vim-toml'
+" CtrlP
+Plug 'ctrlpvim/ctrlp.vim'
 
 
 call plug#end()
@@ -199,14 +201,21 @@ set updatetime=200
 " floaterm
 let g:floaterm_autoclose = v:true
 nnoremap <silent> <F7> :FloatermNew<CR>
+
 " lf
 command! LF FloatermNew lf
 nnoremap <silent> <leader>lf :LF<CR>
 
 " tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
+
 " nerdtree
 map <silent> <F3> :NERDTreeToggle<CR>
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 "Colors
 syntax on
 colorscheme wal

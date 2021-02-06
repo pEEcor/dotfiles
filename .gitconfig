@@ -17,3 +17,5 @@
 	ci = commit -S
 	s = status
     c = commit
+[pull]
+	ff = only
