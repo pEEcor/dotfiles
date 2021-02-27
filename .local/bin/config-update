@@ -99,7 +99,7 @@ fi
 CURRENT_BRANCH=$(${config} symbolic-ref --short -q HEAD)
 
 # Stash changes
-${config} stash
+${config} stash > /dev/null
 
 if [[ ${BRANCH} != "master" ]]; then
     # switch to specified branch,
@@ -126,6 +126,9 @@ fi
 
 # Pop changes
 ${config} stash pop
+
+# Add the popped changes
+${config} add -u
 
 # Commit
 ${config} commit
