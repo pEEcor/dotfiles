@@ -88,7 +88,7 @@ autocmd FileType tex setlocal textwidth=80
 "Moving
 inoremap jj <Esc>
 nnoremap <C-n> :bn<CR>      " next buffer
-nnoremap <C-p> :bp<CR>      " previous buffer
+"nnoremap <C-p> :bp<CR>      " previous buffer
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
