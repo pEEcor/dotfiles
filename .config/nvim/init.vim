@@ -1,6 +1,8 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+"fugitive
+Plug 'tpope/vim-fugitive'
 " theme nord
 Plug 'arcticicestudio/nord-vim'
 " wal vim theme
@@ -31,6 +33,8 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'kevinoid/vim-jsonc'
 " toml support
 Plug 'cespare/vim-toml'
+" rust doc search
+Plug 'rhysd/rust-doc.vim'
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -154,7 +158,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> KK :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -215,6 +219,9 @@ map <silent> <F3> :NERDTreeToggle<CR>
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" rust-doc
+let g:rust_doc#downloaded_rust_doc_dir = '~/file:///home/pb/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc'
 
 "Colors
 syntax on
