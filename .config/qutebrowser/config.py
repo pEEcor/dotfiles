@@ -483,7 +483,7 @@
 ## `colors.webpage.darkmode.threshold.background` to 205.  - "With
 ## selective inversion of everything": Combines the two variants   above.
 ## Type: Bool
-# c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = False
 
 ## Render all colors as grayscale. This only has an effect when
 ## `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
@@ -2171,4 +2171,8 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
 # config.bind('n', 'prompt-accept no', mode='yesno')
 # config.bind('y', 'prompt-accept yes', mode='yesno')
 
+config.load_autoconfig(False)
 config.source('qutewal.py')
+
+config.set("colors.webpage.darkmode.enabled", True)
+
