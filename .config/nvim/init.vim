@@ -1,16 +1,12 @@
-" Plugins
+" Plugins 
+" -----------------------------------------------------------------------------
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 "fugitive
 Plug 'tpope/vim-fugitive'
-" theme nord
-Plug 'arcticicestudio/nord-vim'
 " wal vim theme
 Plug 'dylanaraps/wal.vim'
-" nord
-Plug 'arcticicestudio/nord-vim'
-" airline
-Plug 'vim-airline/vim-airline'
 " gitgutter
 Plug 'airblade/vim-gitgutter'
 " conquer of completion
@@ -37,41 +33,44 @@ Plug 'cespare/vim-toml'
 Plug 'rhysd/rust-doc.vim'
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
-
+" vim tmux navigator
+Plug 'christoomey/vim-tmux-navigator'
+" Lightline
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
 
-"set cmdheight=2
 
-" enable truecolor support
-"if (has("nvim"))
-"  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"endif
-"if (has("termguicolors"))
-"  set termguicolors
-"endif
 
+" Basics 
+" ----------------------------------------------------------------------------
 
 set nobackup
 set nowritebackup
+" disable display of mode, as it is shown in status line
 set noshowmode
+" enable file type specific indentation
 filetype plugin indent on
 
-"Spaces and Tabs
-set tabstop=4                   " width of tab
-set softtabstop=4               " number of spaces in tab when editing
-set shiftwidth=4                " number of spaces for tabs when expandtab is set, also affects automatic indentaion
-set expandtab                   " tabs are spaces with amount of shiftwidth
-set autoindent                  " auto indent curser in next line to current column
+" width of tab
+set tabstop=4
+" number of spaces in tab when editing
+set softtabstop=4
+" number of spaces for tabs when expandtab is set, affects automatic indent
+set shiftwidth=4
+" tabs are spaces with amount of shiftwidth
+set expandtab
+" auto indent curser in next line to current column
+set autoindent
+" column at 80 characters
 "set colorcolumn=80
 
 "UI Config
 set number
 "set cursorline
 set wildmenu
-"set textwidth=120               " automatically wrap after 120 characters
-"set colorcolumn=+1              " show 120 character indicator
+" exchange split behaviour to match splitting with tmux and sway
 set splitbelow splitright
 
 set hidden
@@ -94,36 +93,36 @@ inoremap jj <Esc>
 nnoremap <C-n> :bn<CR>      " next buffer
 "nnoremap <C-p> :bp<CR>      " previous buffer
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
 
-"####################### PLUGIN SPECIFIC CONFIGURATIONS #######################
+"Colors
+syntax on
+colorscheme wal
+
+
+
+
+" Plugin Config
+" ----------------------------------------------------------------------------
 
 " vim airline
-let g:airline_powerline_fonts=1
-let g:airline_theme='wal'
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline_powerline_fonts=1
+"let g:airline_theme='wal'
+"let g:airline#extensions#tabline#enabled = 1
 
-" nord
-"let g:nord_italic = 1
-"let g:nord_italic_comment = 1
-"let g:nord_cursor_line_number_background = 1
-"let g:nord_bold_vertical_split_line = 1
 
 " coc
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
-
 " use <tab> for trigger completion and navigate to the next complete item
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
@@ -157,7 +156,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
+" Use KK to show documentation in preview window.
 nnoremap <silent> KK :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -202,27 +201,36 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " faster gitgutter (200 ms)
 set updatetime=200
 
+
 " floaterm
 let g:floaterm_autoclose = v:true
 nnoremap <silent> <F7> :FloatermNew<CR>
+
 
 " lf
 command! LF FloatermNew lf
 nnoremap <silent> <leader>lf :LF<CR>
 
+
 " tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 
+
 " nerdtree
 map <silent> <F3> :NERDTreeToggle<CR>
+
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+
+" lightline
+set laststatus=2
+let g:lightline = {
+    \ 'colorscheme': 'nord',
+    \ }
+
 " rust-doc
 let g:rust_doc#downloaded_rust_doc_dir = '~/file:///home/pb/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc'
 
-"Colors
-syntax on
-colorscheme wal
