@@ -21,7 +21,11 @@ as `/dev/nvme0n1p2`.
 ```bash
 # partitioning
 cgdisk /dev/nvme0n1
+```
 
+Efi system partion type is `EF00`
+
+```bash
 # load dm-crypt kernel module
 modprobe dm-crypt
 # create luks container
@@ -32,22 +36,22 @@ cryptsetup luksOpen /dev/nvme0n1p2 lvm
 pvcreate /dev/mapper/lvm
 # create volume group
 vgcreate main /dev/mapper/lvm
-# create logical volume inside group (can be multiple volumes, here only one to be used as /)
-lvcreate -L 50GB -n root main
+# create logical volume inside group (can be multiple volumes, here only one)
+lvcreate -l 100%FREE -n root main (create single partition in group)
 ```
 
 Create the filesystems for boot and root and mount both partitions afterwards
 
 ```bash
-mkfs.fat -F 32 -n EFIBOOT /dev/sda1         # EFI Partitionstyp [ef00]
-mkfs.ext4 -L arch /dev/sda2                 # LINUX Partitionstyp [8300]
+mkfs.fat -F 32 -n EFIBOOT /dev/nvme0n1p1         # EFI Partitionstyp [ef00]
+mkfs.ext4 -L arch /dev/main/root                 # LINUX Partitionstyp [8300]
 
-mount /dev/sda2 /mnt
+mount /dev/main/root /mnt
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
 ```
 
-Now we need an internet connection to install Arch! Get your NIC's name and request an IP Address:
+Now it's time for an internet connection.
 
 ```bash
 ip link
@@ -57,26 +61,24 @@ ip link
 dhcpcd eno1                                 # my NIC was called eno1
 ```
 
-If you need a wifi-connection type in `wifi-menu` and follow the instructions.
-
-If you like to disable some mirrors to get Arch only from servers within your country, you can do so by commenting them out in `/etc/pacman.d/mirrorlist`.
+For a wifi-connection, use `iwctl`.
 
 ### Installation
 
 Then install Arch with:
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git neovim
+pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git neovim sway zsh
 ```
 
-For wireless internet access install [netctl](https://wiki.archlinux.org/index.php/Netctl). It provides `wifi-menu` when certain optional requirements are installed too, namely: `wpa_supplicant dialog dhcpcd`.
+For wifi also install `iwd`.
 
 ### Configuration
 
 Generate a filesystem table for your new system based on the current mounts.
 
 ```bash
-genfstab -Lp /mnt > mnt/etc/fstab
+genfstab -Lp /mnt > /mnt/etc/fstab
 ```
 
 Change root into the new system:
@@ -102,17 +104,25 @@ Set matching entries in `/etc/hosts`
 The next configurations will be ready on first boot already
 
 ```bash
-echo KEYMAP=de-latin1 > /etc/vconsole.conf   # set vconsole keyboard layout to german
-
 # set german time
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 # set global system locale to en_US.UTF-8
 echo LANG=en_US.UTF-8 > /etc/locale.conf
+```
 
-# generate english and german
-# uncomment en_US.UTF-8 and de_DE.UTF-8 from /etc/locale.gen
+Uncomment `en_US.UTF-8` from `/etc/locale.gen`
+
+```bash
+# generate english
 locale-gen
+```
+
+Edit `/etc/mkinitcpio.conf` for encrypted boot. This requires lvm2 to be installed
+as we did earlier.
+
+```bash
+HOOKS=(base udev autodetect modconf block keyboard keymap encrypt lvm2 filesystems fsck)
 ```
 
 Now we need to generate the initial ram disk and I usually set a root password.
@@ -125,12 +135,8 @@ passwd
 
 ### Boot Loader
 
-The last step will be the installation and configuration of the boot loader, which requires some packages and the creation of some files:
-
-```bash
-# don't remember if these were necessary
-pacman -S efibootmgr dosfstools
-```
+The last step will be the installation and configuration of the boot loader,
+which requires some packages and the creation of some files:
 
 Create the EFI boot entry
 
