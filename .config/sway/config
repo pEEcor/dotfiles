@@ -19,6 +19,8 @@ include "~/.cache/wal/colors-sway"
 ### Font for title bar
 font FiraCode Nerd Font 10
 
+set $font FiraCode Nerd Font
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -38,7 +40,8 @@ set $term alacritty
 
 # wofi seems to launch applications without hickups when not beeing passed run with drun-
 set $menu_run wofi --show=run
-set $menu_drun ulauncher
+#set $menu_drun ulauncher
+set $menu_drun bemenu-run --fn $font -b -p "▶" --tf "$color1" --hf "$color1" --sf "$color1" --scf "$highlight" --nb "$background" --tb "$background" --fb "$background" --hb "$background" | xargs swaymsg exec
 
 
 ### Input configuration
