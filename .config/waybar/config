@@ -25,7 +25,9 @@
         "custom/separator",
         "memory",
         "custom/separator",
-        "custom/pacman",
+        "backlight",
+        "custom/separator",
+        "battery",
         "custom/separator",
         "clock#date",
         "custom/separator",
@@ -171,8 +173,8 @@
     "battery": {
         "states": {
             "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 10,
+            "critical": 5
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
