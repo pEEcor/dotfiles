@@ -70,11 +70,38 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages)
+plugins=(
+    git
+    colored-man-pages
+    vi-mode
+    zsh-completions
+    #zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# shorten the 0.4 seconds between vi mode switching to 10 milliseconds
+export KEYTIMEOUT=1
+
+
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
+}
+
+# define right prompt, regardless of whether the theme defined it
+RPS1='$(vi_mode_prompt_info)'
+RPS2=$RPS1
+
 
 # shorten the agnoster prompt a little
 prompt_dir() {
@@ -115,7 +142,10 @@ alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # enable syntax highlighting
 # requires zsh-syntax-highlighting e.g. pacman -S zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "`pip completion --zsh`"
+
+bindkey -v
+autoload -U compinit && compinit
