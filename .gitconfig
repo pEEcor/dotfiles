@@ -19,3 +19,7 @@
     c = commit
 [pull]
 	ff = only
+[diff]
+	tool = vimdiff
+[difftool]
+	promt = false
