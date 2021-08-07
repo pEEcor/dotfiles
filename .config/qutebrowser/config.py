@@ -2174,5 +2174,5 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}',
 config.load_autoconfig(False)
 config.source('qutewal.py')
 
-config.set("colors.webpage.darkmode.enabled", True)
+#config.set("colors.webpage.darkmode.enabled", True)
 
