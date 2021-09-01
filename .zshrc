@@ -72,6 +72,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+    fzf
     colored-man-pages
     vi-mode
     zsh-completions

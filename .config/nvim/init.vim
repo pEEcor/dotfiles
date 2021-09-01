@@ -23,7 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " css color
 Plug 'ap/vim-css-color'
 " tmuxline
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 " float term
 Plug 'voldikss/vim-floaterm'
 " tagbar
@@ -31,7 +31,7 @@ Plug 'majutsushi/tagbar'
 " nerdtree
 Plug 'preservim/nerdtree'
 " vimtex
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 " c/c++ syntax highlighting
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " json filetype with comments
@@ -41,7 +41,10 @@ Plug 'cespare/vim-toml'
 " rust doc search
 Plug 'rhysd/rust-doc.vim'
 " CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " vim tmux navigator
 Plug 'christoomey/vim-tmux-navigator'
 " Lightline
@@ -159,6 +162,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap <silent> \gd :sp<CR><Plug>(coc-definition)
+
 " Use KK to show documentation in preview window.
 nnoremap <silent> KK :call <SID>show_documentation()<CR>
 
@@ -226,9 +231,17 @@ map <silent> <F3> :NERDTreeToggle<CR>
 
 
 " CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<leader>-p'
+"let g:ctrlp_cmd = 'CtrlP'
 
+" fzf
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Open fzf files with c-p
+nmap <c-p> :Files<CR>
 
 " lightline
 set laststatus=2
