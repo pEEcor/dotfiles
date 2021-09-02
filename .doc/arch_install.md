@@ -66,7 +66,7 @@ If you like to disable some mirrors to get Arch only from servers within your co
 Then install Arch with:
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git neovim
+pacstrap /mnt base base-devel linux linux-firmware vim lvm2 netctl git neovim sway zsh man
 ```
 
 For wireless internet access install [netctl](https://wiki.archlinux.org/index.php/Netctl). It provides `wifi-menu` when certain optional requirements are installed too, namely: `wpa_supplicant dialog dhcpcd`.
@@ -156,7 +156,10 @@ timeout   1
 
 ### Add User
 
-After booting up we need to reconnect to the internet, and to create a user, this is quickly done. I prefer zsh so installing it and setting it as the users default shell is pretty handy to have it ready when logging in as the newly created user.
+After booting up we need to reconnect to the internet, and to create a user,
+this is quickly done. I prefer zsh so installing it and setting it as the
+users default shell is pretty handy to have it ready when logging in as the
+newly created user.
 
 ```bash
 useradd -m -g users -s /bin/zsh dude                # created user with name dude
@@ -168,7 +171,8 @@ gpasswd -a dude wheel                               # add dude to the wheel grou
 # you might want to add dude to audio, video, games and power as well
 ```
 
-Enable wheelers to execute sudo commands -> uncomment `#%wheel ALL=(ALL) ALL` in `/etc/sudoers`.
+Enable wheelers to execute sudo commands -> uncomment `#%wheel ALL=(ALL) ALL`
+in `/etc/sudoers`.
 
 Done: Now exit the chroot environment and reboot
 
@@ -176,8 +180,6 @@ Done: Now exit the chroot environment and reboot
 exit
 reboot
 ```
-
-Reboot and you will be greeted by Xdm and Awesome after login.
 
 ## Troubleshooting
 
